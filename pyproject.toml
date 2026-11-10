@@ -16,3 +16,6 @@ cavactl = "cavactl.cli:main"
 
 [tool.setuptools]
 packages = ["cavactl"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
