@@ -18,8 +18,9 @@ def build_parser():
         "--config", type=Path, help="path to the cava config file"
     )
 
-    sub = parser.add_subparsers(dest="command", required=True)
+    sub = parser.add_subparsers(dest="command")
 
+    sub.add_parser("tui", help="open the interactive interface (default)")
     sub.add_parser("list", help="show active settings")
 
     p_get = sub.add_parser("get", help="read a setting")
@@ -43,6 +44,11 @@ def reload_and_report():
 
 
 def run(args, path):
+    if args.command in (None, "tui"):
+        from . import tui
+
+        return tui.run(path)
+
     if args.command == "list":
         for setting, value in config.list_settings(path):
             print(f"{setting} = {value}")
