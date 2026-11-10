@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cavactl"
+version = "0.1.0"
+description = "A small CLI to edit cava's configuration and reload it live."
+readme = "README.md"
+requires-python = ">=3.8"
+license = { text = "MIT" }
+keywords = ["cava", "linux", "cli", "audio-visualizer"]
+
+[project.scripts]
+cavactl = "cavactl.cli:main"
+
+[tool.setuptools]
+packages = ["cavactl"]
